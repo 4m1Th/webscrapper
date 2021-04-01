@@ -4,18 +4,16 @@ from bs4 import BeautifulSoup
 import string
 import csv
 
+#The website url that we want to scroll
 URL = 'https://www.whitehouse.gov/briefing-room/page/'
 
+
+#specifing the number of pages
 for page in range(1,53):
     response = requests.get(URL + str(page) + '/')
     soup = BeautifulSoup(response.text, "lxml") 
     data = soup.findAll('a', class_='news-item__title acctext--con')
     date = soup.findAll('time', class_='posted-on entry-date published updated')
-    # link = soup.findAll('a')
-    #for link in soup.findAll('a', href=True):
-    #        print(link['href'])
-#print(data[0].get_text())
-
 
     def remove(string):
         res = " ".join(string.split())
@@ -32,5 +30,4 @@ for page in range(1,53):
         with open('out.csv', 'a+', newline='\n') as file:
             writer = csv.writer(file)
             writer.writerow(test)
-          
-
+         
