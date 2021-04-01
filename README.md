@@ -8,8 +8,8 @@ For executing:
   
 Requirements:
 
-csv
-beautifulsoup
-requests
-lxml
+csv,
+beautifulsoup,
+requests,
+lxml,
 string
